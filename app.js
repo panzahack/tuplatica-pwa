@@ -1,4 +1,4 @@
-// Enhanced Currency Calculator with Commission
+// Enhanced Currency Calculator with Validation
 document.addEventListener('DOMContentLoaded', () => {
   // Get elements
   const usdInput = document.getElementById('usdAmount');
@@ -9,18 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Calculate and display results
   const calculate = () => {
-    const usd = parseFloat(usdInput.value);
-    const rate = parseFloat(currentRate.textContent);
+    let usd = parseFloat(usdInput.value);
     
-    // Validate amount
-    if (usd > 200) {
+    // Auto-correct if amount exceeds 200
+    if (!isNaN(usd) && usd > 200) {
+      usd = 200;
+      usdInput.value = usd;
       amountWarning.classList.remove('hidden');
-      vesResult.textContent = '💰 0 Bs';
-      commissionResult.textContent = '💸 Total a depositar: 0.00 USD (incluye comisión)';
-      return;
     } else {
       amountWarning.classList.add('hidden');
     }
+    
+    const rate = parseFloat(currentRate.textContent);
     
     if (isNaN(usd) || usd <= 0 || isNaN(rate)) {
       vesResult.textContent = '💰 0 Bs';
