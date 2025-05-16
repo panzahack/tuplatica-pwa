@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tu Platica - Envío de Remesas</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#002244">
+  <meta name="theme-color" content="#19223D">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     @media (min-width: 640px) {
@@ -20,12 +20,10 @@
 </head>
 <body class="bg-gray-100">
   <div class="w-full max-w-[400px] px-4 py-8 mx-auto">
-    <!-- Header with logo space -->
-    <div class="text-center mb-6">
+    <!-- Header with logo -->
+    <div class="text-center mb-4">
       <h1 class="text-3xl font-bold text-blue-900">Tu Platica</h1>
-      <div class="mt-4 h-24 bg-gray-200 rounded-lg flex items-center justify-center">
-        <p class="text-gray-500">[Espacio para logo.png]</p>
-      </div>
+      <img src="icon.png" alt="Logo Tu Platica" class="mx-auto mb-4 w-24 h-auto">
     </div>
     
     <!-- Main content card -->
@@ -51,19 +49,45 @@
         </div>
       </div>
       
+      <!-- USD Amount Field -->
+      <div class="mb-4">
+        <label for="usdAmount" class="block text-sm font-medium text-gray-700 mb-1">Monto en USD</label>
+        <div class="flex gap-2">
+          <input id="usdAmount" type="number" step="0.01" min="0" max="200"
+            class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ej: 100">
+          
+          <!-- Result Display -->
+          <div id="vesResult" class="flex-1 px-3 py-2 text-green-600 font-medium">
+            💰 0 Bs
+          </div>
+        </div>
+        
+        <!-- Commission Display -->
+        <div id="commissionResult" class="mt-2 text-blue-600 font-medium">
+          💸 Total a depositar: 0.00 USD (incluye comisión)
+        </div>
+        
+        <!-- Warning Message -->
+        <div id="amountWarning" class="hidden mt-2 text-red-600 text-sm">
+          El monto máximo permitido es 200 USD
+        </div>
+      </div>
+      
+      <!-- Current Rate (hidden reference) -->
+      <div id="currentRate" class="hidden">36.50</div>
+      
       <!-- Zelle info toggle -->
       <button id="zelleToggleBtn" class="w-full bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-medium py-3 px-4 rounded-full mb-4 transition duration-150 ease-in-out">
         ¿A dónde transfiero el Zelle?
       </button>
       
       <!-- Zelle info (hidden by default) -->
-      <div id="zelleInfo" class="hidden bg-yellow-50 p-4 rounded-lg mb-6 border border-yellow-200">
-        <h3 class="font-semibold text-yellow-800 mb-2">Información de la cuenta Zelle:</h3>
-        <ul class="space-y-1 text-sm">
-          <li>📧 Email: <span class="font-medium">tuplatica@gmail.com</span></li>
-          <li>🏦 Banco: <span class="font-medium">Chase</span></li>
-          <li>👤 Titular: <span class="font-medium">José Sosa</span></li>
-        </ul>
+      <div id="zelleInfo" class="hidden mt-2 p-3 bg-white rounded shadow text-center border border-yellow-200">
+        <p class="text-sm">Correo Zelle: <span id="correoZelle" class="font-medium">tuplatica@gmail.com</span></p>
+        <button id="copyZelleBtn" class="mt-2 px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">
+          Copiar
+        </button>
       </div>
       
       <!-- Sender info -->
@@ -94,18 +118,51 @@
           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
       
+      <!-- Save recipient button (shown when fields have content) -->
+      <div id="saveRecipientContainer" class="hidden mt-2">
+        <button id="saveRecipientBtn" class="w-full py-2 px-4 bg-green-100 text-green-800 rounded-md hover:bg-green-200 flex items-center justify-center gap-2">
+          👉 Guardar este destinatario como frecuente
+        </button>
+      </div>
+      
       <!-- Additional notes -->
       <div>
         <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Notas adicionales (opcional)</label>
-        <textarea id="notes" rows="3"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <input type="text" id="notes" maxlength="100" placeholder="Máximo 100 caracteres"
+          class="w-full px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
       
       <!-- WhatsApp number -->
       <div>
         <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">Tu número de WhatsApp</label>
-        <input type="tel" id="whatsapp" required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="flex gap-2">
+          <select id="countryCode" class="w-1/3 px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="+1">🇺🇸 +1 (EE.UU.)</option>
+            <option value="+58" selected>🇻🇪 +58 (Venezuela)</option>
+            <option value="+57">🇨🇴 +57 (Colombia)</option>
+            <option value="+51">🇵🇪 +51 (Perú)</option>
+            <option value="+56">🇨🇱 +56 (Chile)</option>
+          </select>
+          <input type="tel" id="whatsapp" required
+            class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Número sin código">
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Ejemplo: 4121234567</p>
+      </div>
+      
+      <!-- Frequent recipients dropdown (shown when recipients exist) -->
+      <div id="recipientsDropdownContainer" class="hidden mt-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">👉 Selecciona un destinatario frecuente</label>
+        <select id="savedRecipients" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <option value="">-- Seleccionar --</option>
+        </select>
+      </div>
+      
+      <!-- Clear recipients button -->
+      <div class="mt-4 text-center">
+        <button id="clearRecipientsBtn" class="text-sm text-red-600 hover:text-red-800">
+          👉 Eliminar todos los destinatarios guardados
+        </button>
       </div>
       
       <!-- Submit button -->
@@ -120,8 +177,7 @@
       <p>✅ Tu solicitud fue enviada con éxito. Te responderemos pronto por WhatsApp.</p>
     </div>
   </div>
-</div>
   
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
