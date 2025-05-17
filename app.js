@@ -333,33 +333,21 @@ updateRateBtn.addEventListener('click', () => {
   }
 });
 
-// Zelle Email Toggle and Copy
-const zelleToggleBtn = document.getElementById('zelleToggleBtn');
-const zelleInfo = document.getElementById('zelleInfo');
+// Simple Zelle Email Copy
 const copyZelleBtn = document.getElementById('copyZelleBtn');
-const copySuccess = document.getElementById('copySuccess');
 
-// Toggle Zelle info box
-zelleToggleBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  zelleInfo.classList.toggle('hidden');
-});
-
-// Copy email to clipboard
-copyZelleBtn.addEventListener('click', async (e) => {
-  e.preventDefault();
+copyZelleBtn.addEventListener('click', async () => {
   try {
-    await navigator.clipboard.writeText('videlco@gmail.com');
-    copySuccess.classList.remove('hidden');
+    await navigator.clipboard.writeText('tuplatica@gmail.com');
+    
+    // Show temporary feedback
+    const originalText = copyZelleBtn.textContent;
+    copyZelleBtn.textContent = '✅ Copiado';
     
     setTimeout(() => {
-      zelleInfo.classList.add('hidden');
-      copySuccess.classList.add('hidden');
+      copyZelleBtn.textContent = originalText;
     }, 2000);
   } catch (err) {
-    console.error('Failed to copy: ', err);
+    console.error('Failed to copy email:', err);
   }
 });
-
-// Initialize rate display
-updateRateDisplay();
