@@ -47,16 +47,18 @@
 <body class="bg-gray-100">
   <div class="w-full max-w-[400px] px-4 py-8 mx-auto">
     <!-- Header Section -->
-    <header class="bg-white py-4 px-6 shadow-sm">
-      <div class="max-w-4xl mx-auto text-center">
-        <img src="logo.png" alt="Logo Tu Platica" class="mx-auto mb-3 h-24" />
-        <p class="text-sm text-gray-500">
+    <div class="bg-white py-6 px-6 shadow-sm mb-6 rounded-lg">
+      <div class="flex flex-col items-center space-y-3">
+        <img src="logo.png" alt="Logo Tu Platica" class="h-32 mx-auto">
+        <h1 class="text-2xl font-bold text-gray-800">Tu Platica</h1>
+        <p id="currentDate" class="text-gray-500 text-sm">
           <script>
-            document.write(new Date().toLocaleDateString('es-ES'));
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.write(new Date().toLocaleDateString('es-ES', options));
           </script>
         </p>
       </div>
-    </header>
+    </div>
     
     <!-- Main content card -->
     <div class="bg-white p-6 rounded-lg shadow-md">
@@ -160,42 +162,72 @@
       </div>
       
       <!-- Recipient Mobile Payment -->
-      <div class="space-y-3">
+      <div class="space-y-4">
         <h3 class="text-sm font-medium text-gray-700">Pago Móvil del destinatario</h3>
         
+        <!-- Phone Number -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+          <div class="md:col-span-2">
+            <label class="block text-xs text-gray-500 mb-1">Operadora</label>
+            <select id="phonePrefix" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+              <option value="0412">0412</option>
+              <option value="0414">0414</option>
+              <option value="0416">0416</option>
+              <option value="0424">0424</option>
+              <option value="0426">0426</option>
+            </select>
+          </div>
+          <div class="md:col-span-3">
+            <label class="block text-xs text-gray-500 mb-1">Número (7 dígitos)</label>
+            <input type="tel" id="phoneNumber" required
+              class="w-full px-3 py-2 border border-gray-300 rounded-md"
+              placeholder="Ej: 1234567"
+              pattern="\d{7}"
+              maxlength="7">
+          </div>
+        </div>
+
+        <!-- ID Number -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+          <div class="md:col-span-1">
+            <label class="block text-xs text-gray-500 mb-1">Tipo</label>
+            <select id="idType" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+              <option value="V">V</option>
+              <option value="E">E</option>
+            </select>
+          </div>
+          <div class="md:col-span-4">
+            <label class="block text-xs text-gray-500 mb-1">Cédula</label>
+            <input type="text" id="idNumber" required
+              class="w-full px-3 py-2 border border-gray-300 rounded-md"
+              placeholder="Ej: 12345678"
+              pattern="\d{7,8}"
+              maxlength="8">
+          </div>
+        </div>
+
         <!-- Bank Selector -->
         <div>
-          <label for="bank" class="block text-sm font-medium text-gray-700 mb-1">Banco</label>
-          <select id="bank" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="block text-xs text-gray-500 mb-1">Banco</label>
+          <select id="bank" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
             <option value="" disabled selected>Seleccione un banco</option>
+            <option value="banco_de_venezuela">Banco de Venezuela</option>
             <option value="banesco">Banesco</option>
-            <option value="bdv">Banco de Venezuela</option>
             <option value="mercantil">Mercantil</option>
             <option value="provincial">Provincial</option>
-            <option value="bnc">BNC</option>
-            <option value="otros">Otro banco</option>
+            <option value="bod">BOD</option>
+            <option value="100_banco">100% Banco</option>
+            <option value="banco_del_tesoro">Banco del Tesoro</option>
+            <option value="banco_bicentenario">Banco Bicentenario</option>
+            <option value="banco_exterior">Banco Exterior</option>
+            <option value="banco_caroni">Banco Caroní</option>
+            <option value="banco_plaza">Banco Plaza</option>
+            <option value="banco_activo">Banco Activo</option>
+            <option value="bancamiga">Bancamiga</option>
+            <option value="banco_sofitasa">Banco Sofitasa</option>
+            <option value="banco_agricola">Banco Agrícola</option>
+            <option value="otro">-- Otro banco --</option>
           </select>
-        </div>
-        
-        <!-- ID Number -->
-        <div>
-          <label for="idNumber" class="block text-sm font-medium text-gray-700 mb-1">Cédula de identidad</label>
-          <input type="number" id="idNumber" required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Ej: 12345678"
-            pattern="\d*"
-            min="1000000"
-            max="999999999">
-        </div>
-        
-        <!-- Phone Number -->
-        <div>
-          <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Número de teléfono</label>
-          <input type="tel" id="phone" required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Ej: 04141234567"
-            pattern="^(0412|0414|0416|0424|0426)\d{7}$">
-          <p class="text-xs text-gray-500 mt-1">Formato: 0412, 0414, 0416, 0424 o 0426 + 7 dígitos</p>
         </div>
       </div>
       
