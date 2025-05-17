@@ -165,11 +165,12 @@
       <div class="space-y-4">
         <h3 class="text-sm font-medium text-gray-700">Pago Móvil del destinatario</h3>
         
-        <!-- Phone Number - Mobile layout -->
-        <div class="sm:flex sm:flex-row sm:items-center sm:gap-2">
-          <div class="max-sm:w-[30%] max-sm:inline-block">
-            <label class="block text-xs text-gray-500 mb-1 max-sm:sr-only">Operadora</label>
-            <select id="phonePrefix" required class="w-full px-3 py-2 border border-gray-300 rounded-md h-10">
+        <!-- Phone Number Row -->
+        <div class="flex flex-row gap-x-3 mb-4 sm:block">
+          <div class="w-[30%] sm:w-full sm:mb-4">
+            <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Operadora</label>
+            <select id="phonePrefix" required 
+              class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               <option value="0412">0412</option>
               <option value="0414">0414</option>
               <option value="0416">0416</option>
@@ -177,29 +178,30 @@
               <option value="0426">0426</option>
             </select>
           </div>
-          <div class="max-sm:w-[70%] max-sm:inline-block max-sm:align-bottom">
-            <label class="block text-xs text-gray-500 mb-1 max-sm:sr-only">Número</label>
+          <div class="w-[70%] sm:w-full">
+            <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Número</label>
             <input type="tel" id="phoneNumber" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md h-10"
+              class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="7 dígitos"
               pattern="\d{7}"
               maxlength="7">
           </div>
         </div>
 
-        <!-- ID Number - Mobile layout -->
-        <div class="sm:flex sm:flex-row sm:items-center sm:gap-2">
-          <div class="max-sm:w-[20%] max-sm:inline-block">
-            <label class="block text-xs text-gray-500 mb-1 max-sm:sr-only">Tipo</label>
-            <select id="idType" required class="w-full px-3 py-2 border border-gray-300 rounded-md h-10">
+        <!-- ID Number Row -->
+        <div class="flex flex-row gap-x-3 mb-4 sm:block">
+          <div class="w-[20%] sm:w-full sm:mb-4">
+            <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Tipo</label>
+            <select id="idType" required 
+              class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               <option value="V">V</option>
               <option value="E">E</option>
             </select>
           </div>
-          <div class="max-sm:w-[80%] max-sm:inline-block max-sm:align-bottom">
-            <label class="block text-xs text-gray-500 mb-1 max-sm:sr-only">Cédula</label>
+          <div class="w-[80%] sm:w-full">
+            <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Cédula</label>
             <input type="text" id="idNumber" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md h-10"
+              class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="7-8 dígitos"
               pattern="\d{7,8}"
               maxlength="8">
@@ -207,9 +209,10 @@
         </div>
 
         <!-- Bank Selector -->
-        <div>
-          <label class="block text-xs text-gray-500 mb-1">Banco</label>
-          <select id="bank" required class="w-full px-3 py-2 border border-gray-300 rounded-md h-10">
+        <div class="mb-4">
+          <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Banco</label>
+          <select id="bank" required 
+            class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             <option value="" disabled selected>Seleccione un banco</option>
             <option value="banco_de_venezuela">Banco de Venezuela</option>
             <option value="banesco">Banesco</option>
