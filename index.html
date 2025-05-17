@@ -19,6 +19,13 @@
     #installButton {
       touch-action: none; /* Enable drag on mobile */
     }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
 <body class="bg-gray-100">
@@ -32,9 +39,9 @@
     <!-- Main content card -->
     <div class="bg-white p-6 rounded-lg shadow-md">
       <!-- Exchange Rate Cards Section -->
-      <div class="flex flex-wrap gap-4 mb-6 overflow-x-auto pb-2">
+      <div class="flex items-stretch overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
         <!-- TuPlatica Official Card -->
-        <div class="min-w-[250px] bg-white rounded-lg shadow border border-gray-200 flex-1">
+        <div class="flex-shrink-0 w-[220px] mr-4 bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
           <div class="bg-blue-800 text-white p-3 rounded-t-lg">
             <h3 class="font-bold text-center">TuPlatica (Oficial)</h3>
             <p class="text-xs text-blue-100 text-center">TuPlatica</p>
@@ -52,7 +59,7 @@
         </div>
 
         <!-- BCV Card -->
-        <div class="min-w-[250px] bg-white rounded-lg shadow border border-gray-200 flex-1">
+        <div class="flex-shrink-0 w-[220px] mr-4 bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
           <div class="bg-blue-800 text-white p-3 rounded-t-lg">
             <h3 class="font-bold text-center">Oficial</h3>
             <p class="text-xs text-blue-100 text-center">Dólar BCV</p>
@@ -70,7 +77,7 @@
         </div>
 
         <!-- Parallel Market Card -->
-        <div class="min-w-[250px] bg-white rounded-lg shadow border border-gray-200 flex-1">
+        <div class="flex-shrink-0 w-[220px] mr-4 bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
           <div class="bg-blue-800 text-white p-3 rounded-t-lg">
             <h3 class="font-bold text-center">Promedio</h3>
             <p class="text-xs text-blue-100 text-center">EnParaleloVzla</p>
