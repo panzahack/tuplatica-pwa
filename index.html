@@ -166,9 +166,9 @@
         <h3 class="text-sm font-medium text-gray-700">Pago Móvil del destinatario</h3>
         
         <!-- Phone Number -->
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
-          <div class="md:col-span-2">
-            <label class="block text-xs text-gray-500 mb-1">Operadora</label>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="flex-1">
+            <label class="sr-only">Operadora</label>
             <select id="phonePrefix" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
               <option value="0412">0412</option>
               <option value="0414">0414</option>
@@ -177,30 +177,30 @@
               <option value="0426">0426</option>
             </select>
           </div>
-          <div class="md:col-span-3">
-            <label class="block text-xs text-gray-500 mb-1">Número (7 dígitos)</label>
+          <div class="flex-1">
+            <label class="sr-only">Número de Teléfono</label>
             <input type="tel" id="phoneNumber" required
               class="w-full px-3 py-2 border border-gray-300 rounded-md"
-              placeholder="Ej: 1234567"
+              placeholder="Número de Teléfono"
               pattern="\d{7}"
               maxlength="7">
           </div>
         </div>
 
         <!-- ID Number -->
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
-          <div class="md:col-span-1">
-            <label class="block text-xs text-gray-500 mb-1">Tipo</label>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="w-16">
+            <label class="sr-only">Tipo</label>
             <select id="idType" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
               <option value="V">V</option>
               <option value="E">E</option>
             </select>
           </div>
-          <div class="md:col-span-4">
-            <label class="block text-xs text-gray-500 mb-1">Cédula</label>
+          <div class="flex-1">
+            <label class="sr-only">Cédula de Identidad</label>
             <input type="text" id="idNumber" required
               class="w-full px-3 py-2 border border-gray-300 rounded-md"
-              placeholder="Ej: 12345678"
+              placeholder="Cédula de Identidad"
               pattern="\d{7,8}"
               maxlength="8">
           </div>
@@ -208,7 +208,7 @@
 
         <!-- Bank Selector -->
         <div>
-          <label class="block text-xs text-gray-500 mb-1">Banco</label>
+          <label class="sr-only">Banco</label>
           <select id="bank" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
             <option value="" disabled selected>Seleccione un banco</option>
             <option value="banco_de_venezuela">Banco de Venezuela</option>
@@ -226,7 +226,7 @@
             <option value="bancamiga">Bancamiga</option>
             <option value="banco_sofitasa">Banco Sofitasa</option>
             <option value="banco_agricola">Banco Agrícola</option>
-            <option value="otro">-- Otro banco --</option>
+            <option value="otro">Otro banco</option>
           </select>
         </div>
       </div>
