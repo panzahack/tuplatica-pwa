@@ -333,23 +333,32 @@ updateRateBtn.addEventListener('click', () => {
   }
 });
 
-// Zelle info toggle
+// Zelle Email Toggle and Copy
 const zelleToggleBtn = document.getElementById('zelleToggleBtn');
 const zelleInfo = document.getElementById('zelleInfo');
 const copyZelleBtn = document.getElementById('copyZelleBtn');
+const copySuccess = document.getElementById('copySuccess');
 
-zelleToggleBtn.addEventListener('click', () => {
+// Toggle Zelle info box
+zelleToggleBtn.addEventListener('click', (e) => {
+  e.preventDefault();
   zelleInfo.classList.toggle('hidden');
 });
 
-copyZelleBtn.addEventListener('click', () => {
-  const correo = document.getElementById('correoZelle').textContent;
-  navigator.clipboard.writeText(correo).then(() => {
-    zelleInfo.classList.add('hidden');
-    alert('Correo copiado');
-  }).catch(err => {
-    console.error('Error al copiar:', err);
-  });
+// Copy email to clipboard
+copyZelleBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    await navigator.clipboard.writeText('videlco@gmail.com');
+    copySuccess.classList.remove('hidden');
+    
+    setTimeout(() => {
+      zelleInfo.classList.add('hidden');
+      copySuccess.classList.add('hidden');
+    }, 2000);
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+  }
 });
 
 // Initialize rate display
