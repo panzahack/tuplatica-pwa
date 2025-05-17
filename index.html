@@ -166,10 +166,10 @@
         <h3 class="text-sm font-medium text-gray-700">Pago Móvil del destinatario</h3>
         
         <!-- Phone Number -->
-        <div class="flex flex-row gap-2 items-end">
-          <div class="w-1/4">
+        <div class="flex flex-col sm:flex-row gap-2 items-center">
+          <div class="w-full sm:w-1/4">
             <label class="block text-xs text-gray-500 mb-1">Operadora</label>
-            <select id="phonePrefix" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            <select id="phonePrefix" required class="w-full px-3 py-2 border border-gray-300 rounded-md h-[42px]">
               <option value="0412">0412</option>
               <option value="0414">0414</option>
               <option value="0416">0416</option>
@@ -177,10 +177,10 @@
               <option value="0426">0426</option>
             </select>
           </div>
-          <div class="flex-1">
+          <div class="w-full sm:w-3/4">
             <label class="block text-xs text-gray-500 mb-1">Número</label>
             <input type="tel" id="phoneNumber" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md h-[42px]"
               placeholder="7 dígitos"
               pattern="\d{7}"
               maxlength="7">
@@ -188,18 +188,18 @@
         </div>
 
         <!-- ID Number -->
-        <div class="flex flex-row gap-2 items-end">
-          <div class="w-16">
+        <div class="flex flex-col sm:flex-row gap-2 items-center">
+          <div class="w-full sm:w-16">
             <label class="block text-xs text-gray-500 mb-1">Tipo</label>
-            <select id="idType" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            <select id="idType" required class="w-full px-3 py-2 border border-gray-300 rounded-md h-[42px]">
               <option value="V">V</option>
               <option value="E">E</option>
             </select>
           </div>
-          <div class="flex-1">
+          <div class="w-full sm:flex-1">
             <label class="block text-xs text-gray-500 mb-1">Cédula</label>
             <input type="text" id="idNumber" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md h-[42px]"
               placeholder="7-8 dígitos"
               pattern="\d{7,8}"
               maxlength="8">
@@ -209,7 +209,7 @@
         <!-- Bank Selector -->
         <div>
           <label class="block text-xs text-gray-500 mb-1">Banco</label>
-          <select id="bank" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <select id="bank" required class="w-full px-3 py-2 border border-gray-300 rounded-md h-[42px]">
             <option value="" disabled selected>Seleccione un banco</option>
             <option value="banco_de_venezuela">Banco de Venezuela</option>
             <option value="banesco">Banesco</option>
