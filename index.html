@@ -63,12 +63,12 @@
     <!-- Main content card -->
     <div class="bg-white p-6 rounded-lg shadow-md">
       <!-- Exchange Rate Cards Section -->
-      <div class="flex items-stretch overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
-        <!-- TuPlatica Official Card -->
+      <div id="ratesCarousel" class="flex items-stretch overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
+        <!-- Tarjeta Tu Platica -->
         <div class="flex-shrink-0 w-[220px] mr-4 bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
           <div class="card-header-gradient p-3 rounded-t-lg">
-            <h3 class="font-bold text-center">TuPlatica (Oficial)</h3>
-            <p class="text-xs text-blue-100 text-center">TuPlatica</p>
+            <h3 class="font-bold text-center">Tu Platica</h3>
+            <p class="text-xs text-blue-100 text-center">Tasa propia</p>
           </div>
           <div class="p-4 text-center">
             <div class="flex justify-center mb-3">
@@ -76,17 +76,16 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <p class="text-2xl font-bold text-gray-800 mb-2">Bs 36,50</p>
-            <p class="text-xs text-gray-500 mb-3">16/05/2025 - 7:30 PM</p>
-            <button class="btn-gradient px-3 py-1 rounded-full">Oficial</button>
+            <p id="rate-tuplatica" class="text-2xl font-bold text-gray-800 mb-2">Bs 36,50</p>
+            <p class="text-xs text-gray-500 mb-3" id="date-tuplatica">16/05/2025 - 7:30 PM</p>
+            <button class="btn-gradient px-3 py-1 rounded-full" disabled>Oficial</button>
           </div>
         </div>
-
-        <!-- BCV Card -->
+        <!-- Tarjeta Dólar BCV -->
         <div class="flex-shrink-0 w-[220px] mr-4 bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
           <div class="card-header-gradient p-3 rounded-t-lg">
-            <h3 class="font-bold text-center">Oficial</h3>
-            <p class="text-xs text-blue-100 text-center">Dólar BCV</p>
+            <h3 class="font-bold text-center">Dólar BCV</h3>
+            <p class="text-xs text-blue-100 text-center">BCV</p>
           </div>
           <div class="p-4 text-center">
             <div class="flex justify-center mb-3">
@@ -94,17 +93,33 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <p class="text-2xl font-bold text-gray-800 mb-2">Bs 36,25</p>
-            <p class="text-xs text-gray-500 mb-3">16/05/2025 - 7:30 PM</p>
-            <button class="btn-gradient px-3 py-1 rounded-full">Ver</button>
+            <p id="rate-bcv" class="text-2xl font-bold text-gray-800 mb-2">Bs 36,25</p>
+            <p class="text-xs text-gray-500 mb-3" id="date-bcv">16/05/2025 - 7:30 PM</p>
+            <button class="btn-gradient px-3 py-1 rounded-full" disabled>BCV</button>
           </div>
         </div>
-
-        <!-- Parallel Market Card -->
+        <!-- Tarjeta Paralelo -->
         <div class="flex-shrink-0 w-[220px] mr-4 bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
+          <div class="card-header-gradient p-3 rounded-t-lg">
+            <h3 class="font-bold text-center">Paralelo</h3>
+            <p class="text-xs text-blue-100 text-center">Monitor Dólar</p>
+          </div>
+          <div class="p-4 text-center">
+            <div class="flex justify-center mb-3">
+              <svg class="blue-icon w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <p id="rate-paralelo" class="text-2xl font-bold text-gray-800 mb-2">Bs 37,10</p>
+            <p class="text-xs text-gray-500 mb-3" id="date-paralelo">16/05/2025 - 7:30 PM</p>
+            <button class="btn-gradient px-3 py-1 rounded-full" disabled>Paralelo</button>
+          </div>
+        </div>
+        <!-- Tarjeta Promedio -->
+        <div class="flex-shrink-0 w-[220px] bg-white rounded-lg shadow border border-gray-200" style="scroll-snap-align: start;">
           <div class="card-header-gradient p-3 rounded-t-lg">
             <h3 class="font-bold text-center">Promedio</h3>
-            <p class="text-xs text-blue-100 text-center">EnParaleloVzla</p>
+            <p class="text-xs text-blue-100 text-center">Promedio mercado</p>
           </div>
           <div class="p-4 text-center">
             <div class="flex justify-center mb-3">
@@ -112,11 +127,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <p class="text-2xl font-bold text-gray-800 mb-2">Bs 37,10</p>
-            <p class="text-xs text-gray-500 mb-3">16/05/2025 - 7:30 PM</p>
-            <button class="btn-gradient px-3 py-1 rounded-full">Ver</button>
+            <p id="rate-promedio" class="text-2xl font-bold text-gray-800 mb-2">Bs 36,62</p>
+            <p class="text-xs text-gray-500 mb-3" id="date-promedio">16/05/2025 - 7:30 PM</p>
+            <button class="btn-gradient px-3 py-1 rounded-full" disabled>Promedio</button>
           </div>
         </div>
+      </div>
       </div>
       
       <!-- USD Amount Field -->
