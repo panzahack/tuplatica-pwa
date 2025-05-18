@@ -75,6 +75,16 @@ const addRecipientBtn = document.getElementById('addRecipientBtn');
 const recipientsList = document.getElementById('recipientsList');
 const clearStorageBtn = document.getElementById('clearStorageBtn');
 
+// Comprobante file input functionality
+const comprobanteInput = document.getElementById('comprobanteInput');
+const comprobanteFileName = document.getElementById('comprobanteFileName');
+if (comprobanteInput && comprobanteFileName) {
+  comprobanteInput.addEventListener('change', function(e) {
+    const fileName = e.target.files[0]?.name || 'Ningún archivo seleccionado';
+    comprobanteFileName.textContent = fileName;
+  });
+}
+
 // Check if fields have content to show save button
 function checkFields() {
   if (recipientInput.value && bankInfoInput.value) {
