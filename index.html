@@ -167,21 +167,20 @@
       <!-- Recipient Mobile Payment -->
       <div class="space-y-4">
         <h3 class="text-sm font-medium text-gray-700">Pago Móvil del destinatario</h3>
-        
-        <!-- Phone Number Row -->
-        <div class="flex flex-row gap-x-3 mb-4 sm:block">
-          <div class="w-[30%] sm:w-full sm:mb-4">
+        <!-- Phone and ID Row: Todo alineado y profesional -->
+        <div class="grid grid-cols-2 gap-3 mb-4">
+          <div>
             <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Operadora</label>
             <select id="phonePrefix" required 
               class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               <option value="0412">0412</option>
               <option value="0414">0414</option>
-              <option value="0416">0416</option>
               <option value="0424">0424</option>
+              <option value="0416">0416</option>
               <option value="0426">0426</option>
             </select>
           </div>
-          <div class="w-[70%] sm:w-full">
+          <div>
             <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Número</label>
             <input type="tel" id="phoneNumber" required
               class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -189,11 +188,7 @@
               pattern="\d{7}"
               maxlength="7">
           </div>
-        </div>
-
-        <!-- ID Number Row -->
-        <div class="flex flex-row gap-x-3 mb-4 sm:block">
-          <div class="w-[20%] sm:w-full sm:mb-4">
+          <div>
             <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Tipo</label>
             <select id="idType" required 
               class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -201,7 +196,7 @@
               <option value="E">E</option>
             </select>
           </div>
-          <div class="w-[80%] sm:w-full">
+          <div>
             <label class="block text-xs text-gray-500 mb-1 sm:text-sm sm:font-medium sm:text-gray-700">Cédula</label>
             <input type="text" id="idNumber" required
               class="h-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
